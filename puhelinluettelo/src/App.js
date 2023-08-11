@@ -124,7 +124,7 @@ const App = () => {
         })
         .catch((error) => {
           setMessage({
-            isError: false,
+            isError: true,
             message: `Error adding ${newName}`,
           })
           setTimeout(() => {
