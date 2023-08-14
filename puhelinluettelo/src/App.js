@@ -51,12 +51,11 @@ const App = () => {
       .catch((error) => {
         setMessage({
           isError: true,
-          message: `Information of ${existingPerson.name} has already been removed from server`,
+          message: `Error updating ${existingPerson.name}: ${error.response.data.error}`,
         })
         setTimeout(() => {
           setMessage(null)
         }, 5000)
-        setPersons(persons.filter((p) => p.id !== existingPerson.id))
         console.log(`Error updating person to list: ${error}`)
       })
   }
@@ -125,7 +124,7 @@ const App = () => {
         .catch((error) => {
           setMessage({
             isError: true,
-            message: `Error adding ${newName}`,
+            message: `Error adding ${newName}: ${error.response.data.error}`,
           })
           setTimeout(() => {
             setMessage(null)
